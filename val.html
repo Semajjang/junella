@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💜 Valentine for Junella 💜</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #cdb4f6 0%, #ffc4ec 100%);
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        /* Large Floating Hearts Background */
+        .heart-bg {
+            position: absolute;
+            bottom: -100px;
+            color: rgba(255, 255, 255, 0.5);
+            user-select: none;
+            pointer-events: none;
+            animation: floatUp 10s linear infinite;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            padding: 50px 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            width: 85%;
+            max-width: 500px;
+            height: 460px; 
+            position: absolute;
+            top: 50%; 
+            transform: translateY(-50%);
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 54px;
+            margin: 0;
+            color: white;
+            text-shadow: 2px 2px 12px rgba(124, 58, 237, 0.3);
+        }
+
+        #subtitle {
+            font-size: 20px;
+            margin-top: 15px;
+            color: #5b21b6;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Refined Typography for Details */
+        #details {
+            display: none;
+            margin-top: 30px;
+            font-size: 19px;
+            color: #6d28d9; /* Rich purple */
+            line-height: 1.8;
+            font-weight: 500;
+            animation: fadeIn 1.2s ease-in forwards;
+        }
+
+        #details b {
+            color: #4c1d95; /* Deep contrast purple */
+            letter-spacing: 0.8px;
+            font-weight: 600;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Volume Control Styling */
+        #volumeContainer {
+            display: none;
+            margin-top: 25px;
+            opacity: 0;
+            animation: fadeIn 1.2s ease-in 0.5s forwards;
+        }
+
+        #volLabel {
+            font-size: 13px;
+            color: #7c3aed; /* Lighter vivid purple */
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 140px;
+            background: transparent;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            height: 4px;
+            background: rgba(109, 40, 217, 0.2);
+            border-radius: 2px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #6d28d9;
+            cursor: pointer;
+            margin-top: -6px;
+            box-shadow: 0 0 8px rgba(109, 40, 217, 0.3);
+        }
+
+        /* Buttons */
+        button {
+            padding: 18px 35px;
+            font-size: 22px;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            position: fixed; 
+            transition: 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        #yesBtn {
+            background: #7c3aed;
+            color: white;
+            left: 50%;
+            top: 65%; 
+            transform: translate(-120%, -50%) scale(1);
+            z-index: 100;
+        }
+
+        #noBtn {
+            background: #efe9ff;
+            color: #5b21b6;
+            left: 50%;
+            top: 65%; 
+            transform: translate(20%, -50%);
+            z-index: 50;
+        }
+
+        .sticker {
+            position: fixed;
+            width: 100px;
+            pointer-events: none;
+            animation: stickerFloat 6s linear forwards;
+            z-index: 2; 
+        }
+
+        @keyframes stickerFloat {
+            from { transform: translateY(20px) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; }
+            to { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
+
+        .firework { position: fixed; width: 6px; height: 6px; border-radius: 50%; pointer-events: none; animation: explode 1s ease-out forwards; z-index: 200; }
+        @keyframes explode { from { transform: translate(0,0); opacity: 1; } to { transform: var(--move); opacity: 0; } }
+    </style>
+</head>
+<body>
+
+<audio id="romanticMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="glass-card">
+    <h1>Be My Valentine?</h1>
+    <div id="subtitle">choose wisely...</div>
+
+    <div id="details">
+        📍 <b>Greenwoods Executive Village</b><br>
+        ⏰ 10:00 AM<br>
+        🍴 Romantic Dinner<br>
+        ✨ ...and more surprises!
+        
+        <div id="volumeContainer">
+            <span id="volLabel">Volume slider just for you 💜cus its so loud 😭</span>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.1">
+        </div>
+    </div>
+</div>
+
+<button id="yesBtn" onclick="yesClicked()">YES 💜</button>
+<button id="noBtn" onclick="noClicked()">NO 🙄</button>
+
+<script>
+    let noClicks = 0;
+    let scale = 1;
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const subtitle = document.getElementById("subtitle");
+    const details = document.getElementById("details");
+    const music = document.getElementById("romanticMusic");
+    const volContainer = document.getElementById("volumeContainer");
+    const volSlider = document.getElementById("volumeSlider");
+
+    const messages = ["choose wisely...", "are you sure?", "really sure?", "that seems wrong", "try again 😔", "why press no", "im starting to think", "you like the yes button", "it looks nice right?", "just press yes", "this is getting awkward", "everyone is judging you", "okay last chance", "press yes pls 💜"];
+
+    function createBackgroundHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart-bg";
+        heart.innerHTML = "💜";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 5 + 7) + "s";
+        const size = Math.floor(Math.random() * 30 + 30);
+        heart.style.fontSize = size + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 10000);
+    }
+    setInterval(createBackgroundHeart, 700);
+
+    function randomMove() {
+        const maxX = window.innerWidth - noBtn.offsetWidth;
+        const maxY = window.innerHeight - noBtn.offsetHeight;
+        noBtn.style.left = Math.random() * maxX + "px";
+        noBtn.style.top = Math.random() * maxY + "px";
+        noBtn.style.transform = "none";
+    }
+
+    function noClicked() {
+        noClicks++;
+        subtitle.innerText = noClicks < messages.length ? messages[noClicks] : "JUST PRESS YES ALREADY 💀";
+        if(noClicks <= 6) randomMove();
+        else if(noClicks === 7) { noBtn.style.left = "50%"; noBtn.style.top = "65%"; noBtn.style.transform = "translate(20%, -50%)"; }
+        else { scale += Math.max(0.08, 0.25 - scale*0.02); yesBtn.style.transform = `translate(-120%, -50%) scale(${scale})`; }
+    }
+
+    function createFirework(x,y){
+        for(let i=0; i<35; i++){
+            const p = document.createElement("div");
+            p.className = "firework";
+            p.style.background = ["#fff","#e9d5ff","#c084fc","#ffc4ec","#d8b4fe"][Math.floor(Math.random()*5)];
+            p.style.left = x+"px"; p.style.top = y+"px";
+            const angle = Math.random()*360; const dist = 80 + Math.random()*60;
+            p.style.setProperty("--move",`translate(${Math.cos(angle*Math.PI/180)*dist}px,${Math.sin(angle*Math.PI/180)*dist}px)`);
+            document.body.appendChild(p); setTimeout(()=>p.remove(),1200);
+        }
+    }
+
+    function spawnSticker(){
+        const img = document.createElement("img");
+        const stickers = ["james1.png", "james2.png", "junella1.png", "junella2.png", "junella3.png"];
+        img.src = stickers[Math.floor(Math.random()*stickers.length)];
+        img.className = "sticker";
+        img.style.left = Math.random() * 90 + "vw"; 
+        img.style.top = "100vh";
+        document.body.appendChild(img); 
+        setTimeout(()=>img.remove(), 6000);
+    }
+
+    function yesClicked() {
+        subtitle.style.display = "none";
+        yesBtn.style.display = "none";
+        noBtn.style.display = "none";
+        details.style.display = "block";
+        volContainer.style.display = "block";
+        
+        music.volume = volSlider.value;
+        music.play().catch(() => console.log("Music play blocked."));
+
+        volSlider.addEventListener("input", (e) => {
+            music.volume = e.target.value;
+        });
+
+        setInterval(spawnSticker, 700);
+        setInterval(() => createFirework(Math.random()*window.innerWidth, Math.random()*window.innerHeight/2), 200);
+    }
+</script>
+</body>
+</html>
