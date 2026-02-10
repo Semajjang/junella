@@ -223,7 +223,7 @@
     const volContainer = document.getElementById("volumeContainer");
     const volSlider = document.getElementById("volumeSlider");
 
-    const messages = ["choose wisely...", "are you sure?", "really sure?", "that seems wrong", "try again 😔", "why press no", "im starting to think", "you like the yes button", "it looks nice right?", "just press yes", "this is getting awkward", "everyone is judging you", "okay last chance", "press yes pls 💜"];
+    const messages = ["choose wisely...", "are you sure?", "really sure?", "wrong choice", "luh, try again 😔", "why press no", "wag na makulit", "press the yessss button", "hehe pleaseee", "just press yes, baby", "awkwarddddd", "stopppp", "okay last chance", "press yes pls 💜"];
 
     function createBackgroundHeart() {
         const heart = document.createElement("div");
@@ -248,7 +248,7 @@
 
     function noClicked() {
         noClicks++;
-        subtitle.innerText = noClicks < messages.length ? messages[noClicks] : "JUST PRESS YES ALREADY 💀";
+        subtitle.innerText = noClicks < messages.length ? messages[noClicks] : "JUST PRESS YES BRUH 💀";
         if(noClicks <= 6) randomMove();
         else if(noClicks === 7) { noBtn.style.left = "50%"; noBtn.style.top = "65%"; noBtn.style.transform = "translate(20%, -50%)"; }
         else { scale += Math.max(0.08, 0.25 - scale*0.02); yesBtn.style.transform = `translate(-120%, -50%) scale(${scale})`; }
@@ -297,3 +297,4 @@
 </script>
 </body>
 </html>
+
